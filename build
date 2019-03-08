@@ -1,0 +1,36 @@
+#!/bin/sh
+############################
+# build libdixie.a 
+############################
+#
+
+if cd dixieapp; then
+    echo "building dixieapp..."
+    if ./build; then
+        if cd ../dixieterminal; then
+            echo "building dixieterminal..."
+            if ./build; then
+                if cd ../dixiemenu; then
+                    echo "building dixiemenu..."
+                    if ./build; then
+                        echo "building cgidiaper..."
+                        if cd ../cgidiaper; then
+                            if ./build; then
+                                echo "building phonebook..."
+				if cd ../phonebook; then
+				    if ./build; then			  	
+			                echo "libdixie.a created"...
+			                cd ..
+			                ar -tv libdixie.a
+				    fi
+				fi
+			    fi
+			fi
+		    fi
+		fi
+	    fi
+	fi
+    fi
+fi
+
+ 

@@ -1,0 +1,22 @@
+#!/bin/sh
+############################
+# build libdixie.a 
+############################
+#
+if g++ -I$HOME/include DixieMenu.cpp -c; then
+    echo "DixieMenu Object created..."
+    if ar cr $HOME/lib/libdixie.a DixieMenu.o; then
+        echo "DixieMenu.o added to $HOME/lib/libdixie.a library..."
+        if g++ test.cpp -I$HOME/include -I. -L$HOME/lib -ldixie -o test; then
+            echo "Build complete -- run ./test to verify"
+        else
+            echo "***ERROR compiling test.cpp"
+        fi
+    else
+        echo "***ERROR adding to library build terminated "
+    fi
+else
+    echo "***ERRORS in DixieMenu.cpp build terminated "
+fi
+
+ 

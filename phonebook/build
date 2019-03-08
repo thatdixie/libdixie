@@ -1,0 +1,27 @@
+#!/bin/sh
+######################################
+# build libdixie.a
+# -----------------
+# This scripts adds PhoneDatabase 
+# PhoneHashTable and PhoneContact
+# Objects to Libdixie.a
+#######################################
+#
+ 
+if g++ -I$HOME/include -I. PhoneDatabase.cpp PhoneHashTable.cpp PhoneContact.cpp -c; then
+    echo "PhoneDatabase PhoneHashTable and PhoneContact Objects created..."
+    if ar cr $HOME/lib/libdixie.a PhoneDatabase.o PhoneHashTable.o PhoneContact.o; then
+        echo "PhoneDatabase.o PhoneHashTable.o and PhoneContact.o added to $HOME/lib/libdixie.a library..."
+        if g++  test.cpp -I$HOME/include -I. -L$HOME/lib -ldixie -o test; then
+            echo "Build complete -- run ./test to verify"
+        else
+            echo "***ERROR compiling test.cpp"
+        fi
+    else
+        echo "***ERROR adding to library build terminated "
+    fi
+else
+    echo "***ERRORS in compiling build terminated "
+fi
+
+ 

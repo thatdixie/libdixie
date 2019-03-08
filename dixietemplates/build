@@ -1,0 +1,17 @@
+#!/bin/sh
+
+############################################################
+# build script 
+############################################################
+g++ \
+    main.cpp          \
+    DixieTerminal.cpp \
+    StringMap.cpp     \
+    PhoneContacts.cpp \
+-I. -o test
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+tty_normal=9
+tty_data=9
+allowTerminalColor=true
+current_color=9
